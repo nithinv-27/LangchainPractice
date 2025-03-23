@@ -10,7 +10,7 @@ from langchain_practice import llm_inference
 
 load_dotenv("keys.env")
 
-file_path = "" #Add your pdf file path
+file_path = "DeepEyeNet__Group_Access_.pdf" #Add your pdf file path
 
 loader = PyPDFLoader(file_path)
 
@@ -55,6 +55,8 @@ query=input("Enter your question: ")
 embedded_query=embeddings.embed_query(query)
 
 results=index.query(vector=embedded_query, top_k=1, include_metadata=True)
+
+print(results)
 
 context=str(list(results.matches[0].metadata.values())[3])
 
